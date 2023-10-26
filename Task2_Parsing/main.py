@@ -1,6 +1,5 @@
-import requests
+import requests, json, time
 from bs4 import BeautifulSoup
-import json
 import pandas as pd
 from openpyxl.workbook import Workbook
 from data_preparing import headers
@@ -35,6 +34,8 @@ for name, href in units_50.items():
     })
 
     cnt += 1
+    if cnt % 20 == 0:
+        time.sleep(20)
 
 # создаем объект Pandas 
 df = pd.DataFrame(all_units)
